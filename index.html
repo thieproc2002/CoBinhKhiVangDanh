@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Webgame Cờ – Demo</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h2 style="text-align:center">Webgame Cờ Đơn Giản – 2 Người Chơi</h2>
+<div id="board-container">
+    <img id="bg-image" src="assets/background.jpg">
+
+    <div id="board"></div>
+</div>
+<script src="game.js"></script>
+<!-- Layer phủ khi bắt đầu -->
+<div id="startScreen" class="start-screen">
+    <div class="start-content">
+        <!-- Tên game -->
+        <h1 class="game-title">BINH KHÍ VANG DANH</h1>
+        
+        <!-- Nút bắt đầu -->
+        <button id="startBtn" class="start-btn">
+            <img src="assets/start_button.png" alt="Bắt đầu">
+        </button>
+        
+        <!-- Hai nút phía dưới -->
+        <div class="bottom-buttons">
+            <button id="storyBtn" class="icon-btn">
+                <img src="assets/story_icon.png" alt="Cốt truyện">
+            </button>
+            <button id="helpBtn" class="icon-btn">
+                <img src="assets/help_icon.png" alt="Luật chơi">
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- Modal cốt truyện -->
+<div id="storyModal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <img src="assets/story_image.jpg" alt="Cốt truyện">
+    </div>
+</div>
+
+<!-- Modal luật chơi -->
+<div id="helpModal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <img src="assets/help_image.jpg" alt="Luật chơi">
+    </div>
+</div>
+</body>
+</html>

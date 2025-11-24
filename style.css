@@ -1,0 +1,230 @@
+body {
+    font-family: Arial;
+    background: #f3f3f3;
+}
+#board-container {
+    position: relative;
+    width: 630px;    /* 9 cột x 70px */
+    height: 490px;   /* 7 dòng x 70px */
+    margin: auto;
+}
+
+#bg-image {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+}
+#board {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-rows: repeat(7, 70px);
+    grid-template-columns: repeat(9, 70px);
+    z-index: 2;
+    background-color: rgb(255, 255, 255); /* lớp phủ bán trong suốt */
+    backdrop-filter: blur(3px);
+}
+
+.cell {
+    position: relative;
+    border: 1px solid rgba(0, 0, 0, 0.66);
+}
+
+.cell.highlight {
+    background: #ffeeaae4;
+    z-index: 6;
+}
+
+.piece {
+    position: relative;
+    z-index: 5;
+    width: 100%;
+    height: 100%;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 50%;
+}
+.cell.trap,
+.cell.base {
+    position: relative;
+    z-index: 1;
+}
+.trap {
+    background-image: url("assets/trap.png");
+    background-size: cover;
+}
+.base {
+    background-image: url("assets/base.png");
+    background-size: cover;
+}
+.trapred {
+    background-image: url("assets/trapred.png");
+    background-size: cover;
+}
+.basered {
+    background-image: url("assets/basered.png");
+    background-size: cover;
+}
+.water-group {
+    position: absolute;
+    width: 210px; /* 3 cột x 70px */
+    height: 140px; /* 3 dòng x 70px */
+    background-image: url("assets/water.png");
+    background-size: cover;
+    z-index: 1;
+    pointer-events: none;
+}
+/* Thêm vào file CSS */
+.piece.trapped {
+    opacity: 0.6;
+    filter: grayscale(50%) brightness(70%);
+    border: 2px dashed red !important;
+    position: relative;
+}
+
+.piece.trapped::after {
+    content: "BẪY";
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: red;
+    color: white;
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-size: 10px;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+/* Hoặc hiệu ứng khác (tuỳ chọn) */
+.piece.trapped {
+    /* Hiệu ứng mờ và đỏ */
+    opacity: 0.7;
+    filter: sepia(100%) hue-rotate(-50deg) brightness(80%);
+    border: 2px dotted #ff4444;
+    box-shadow: 0 0 8px rgba(255, 0, 0, 0.5);
+}
+/* .red { background: #ff6b6b; }
+.yellow { background: #ffd93d; }
+.cell.water { background: #a2d2ff; }
+.cell.trap { background: #ffd6a5; }
+.cell.base { background: #bde0fe; } */
+/* Layer phủ khi bắt đầu */
+.start-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.start-content {
+    text-align: center;
+    color: white;
+    position: relative;
+}
+
+.game-title {
+    font-size: 3em;
+    margin-bottom: 50px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    color: #ffd700;
+}
+
+.start-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    margin-bottom: 30px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.start-btn img {
+    width: 200px;
+    height: auto;
+    transition: transform 0.3s;
+    border-radius: 5%;
+}
+
+.start-btn:hover img {
+    transform: scale(1.1);
+}
+
+.bottom-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.icon-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 5%;
+}
+
+.icon-btn img {
+    width: 50px;
+    height: 50px;
+    transition: transform 0.3s;
+    border-radius: 5%;
+}
+
+.icon-btn:hover img {
+    transform: scale(1.1);
+}
+
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1001;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.8);
+}
+
+.modal-content {
+    position: relative;
+    margin: 5% auto;
+    width: 80%;
+    max-width: 800px;
+    text-align: center;
+}
+
+.modal-content img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+.close {
+    position: absolute;
+    top: -40px;
+    right: 0;
+    color: white;
+    font-size: 35px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover {
+    color: #ffd700;
+}
